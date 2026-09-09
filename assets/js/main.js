@@ -11,7 +11,7 @@
   const partGrid = document.querySelector('#part-grid');
   c.parts.forEach(part => partGrid.insertAdjacentHTML('beforeend', `<article class="part-card reveal"><span class="part-icon" aria-hidden="true">${part.icon}</span><h3>${part.title}</h3><p>${part.text}</p></article>`));
   const carsGrid = document.querySelector('#cars-grid');
-  c.cars.forEach(car => carsGrid.insertAdjacentHTML('beforeend', `<article class="car-card reveal"><span class="car-tag">${car.tag}</span><h3>${car.title}</h3><p class="car-meta">${car.meta}</p><p>${car.text}</p></article>`));
+  c.cars.forEach(car => carsGrid.insertAdjacentHTML('beforeend', `<article class="car-card reveal"><div class="car-img"><img src="${car.image}" alt="${car.title}" loading="lazy"></div><div class="car-content"><span class="car-tag">${car.tag}</span><h3>${car.title}</h3><p class="car-meta">${car.meta}</p><p>${car.text}</p></div></article>`));
   const menu = document.querySelector('.menu'); const nav = document.querySelector('#nav');
   menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); });
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); }));
