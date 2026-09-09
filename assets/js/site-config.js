@@ -4,6 +4,7 @@ window.SITE_CONFIG = {
   phoneDisplay: '+218 00 000 0000',
   email: 'info@alkhabeer.ly',
   location: 'ليبيا — أضف عنوان المعرض هنا',
+  models: ['Hyundai Accent', 'Hyundai Elantra', 'Hyundai Tucson', 'Kia Cerato', 'Kia Sportage', 'Kia Rio', 'Daewoo', 'Chevrolet Korea'],
   parts: [
     { icon: '⚙', title: 'قطع المحرك', text: 'فلاتر، سيور، حساسات، بواجي وقطع الصيانة الدورية.' },
     { icon: '◉', title: 'الفرامل والتعليق', text: 'فحمات، هوبات، مساعدات، أذرعة وقطع نظام التعليق.' },

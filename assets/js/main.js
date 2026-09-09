@@ -6,6 +6,8 @@
   document.querySelectorAll('[data-email-text]').forEach(el => el.textContent = c.email);
   document.querySelectorAll('[data-location]').forEach(el => el.textContent = c.location);
   document.querySelector('#year').textContent = new Date().getFullYear();
+  const modelChips = document.querySelector('#model-chips');
+  c.models.forEach(model => modelChips.insertAdjacentHTML('beforeend', `<span>${model}</span>`));
   const partGrid = document.querySelector('#part-grid');
   c.parts.forEach(part => partGrid.insertAdjacentHTML('beforeend', `<article class="part-card reveal"><span class="part-icon" aria-hidden="true">${part.icon}</span><h3>${part.title}</h3><p>${part.text}</p></article>`));
   const carsGrid = document.querySelector('#cars-grid');
