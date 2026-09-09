@@ -1,0 +1,20 @@
+(() => {
+  const c = window.SITE_CONFIG;
+  document.querySelectorAll('[data-phone-display]').forEach(el => el.textContent = c.phoneDisplay);
+  document.querySelectorAll('[data-phone]').forEach(el => el.href = `tel:+${c.whatsapp}`);
+  document.querySelectorAll('[data-email]').forEach(el => el.href = `mailto:${c.email}`);
+  document.querySelectorAll('[data-email-text]').forEach(el => el.textContent = c.email);
+  document.querySelectorAll('[data-location]').forEach(el => el.textContent = c.location);
+  document.querySelector('#year').textContent = new Date().getFullYear();
+  const partGrid = document.querySelector('#part-grid');
+  c.parts.forEach(part => partGrid.insertAdjacentHTML('beforeend', `<article class="part-card reveal"><span class="part-icon" aria-hidden="true">${part.icon}</span><h3>${part.title}</h3><p>${part.text}</p></article>`));
+  const carsGrid = document.querySelector('#cars-grid');
+  c.cars.forEach(car => carsGrid.insertAdjacentHTML('beforeend', `<article class="car-card reveal"><span class="car-tag">${car.tag}</span><h3>${car.title}</h3><p class="car-meta">${car.meta}</p><p>${car.text}</p></article>`));
+  const menu = document.querySelector('.menu'); const nav = document.querySelector('#nav');
+  menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); }));
+  const form = document.querySelector('#parts-form');
+  form.addEventListener('submit', event => { event.preventDefault(); if (c.whatsapp === '218000000000') { alert('أضف رقم واتساب الحقيقي في assets/js/site-config.js قبل النشر.'); return; } const data = new FormData(form); const message = `مرحباً الخبير، أريد طلب قطعة غيار.\nالاسم: ${data.get('name')}\nالسيارة: ${data.get('car')}\nسنة الصنع: ${data.get('year') || 'غير محددة'}\nرقم الهيكل: ${data.get('vin') || 'غير مرفق'}\nالقطعة المطلوبة: ${data.get('part')}`; window.open(`https://wa.me/${c.whatsapp}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer'); });
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
